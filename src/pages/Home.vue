@@ -3,6 +3,7 @@
 		<div class="flex-row justify-content-center">
 			<h1>Hello World</h1>
 		</div>
+		<router-link to="/customer-auth">去认证</router-link>
 	</div>
 </template>
 

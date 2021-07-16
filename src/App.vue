@@ -6,4 +6,5 @@
 
 <style lang="less">
 @import "./assets/styles/index.less";
+@import "./assets/styles/vant-custom.less";
 </style>

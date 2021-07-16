@@ -5,6 +5,10 @@ const routes: Array<RouteRecordRaw> = [
 		component: () => import("@/pages/Home.vue"),
 	},
 	{
+		path: "/customer-auth",
+		component: () => import("@/pages/customer-auth/CustomerAuth.vue"),
+	},
+	{
 		path: "/:pathMatch(.*)*",
 		name: "NotFound",
 		component: () => import("@/pages/NotFound.vue"),

@@ -19,6 +19,11 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
 			postcss: {
 				plugins: [pxToViewPort({ viewportWidth: 375 })],
 			},
+			preprocessorOptions: {
+				less: {
+					additionalData: '@import "src/assets/styles/variables.less";',
+				},
+			},
 		},
 		plugins: [
 			vue(),

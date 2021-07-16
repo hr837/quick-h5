@@ -39,38 +39,38 @@ import {
  * 用到的vant组件
  */
 const vantLib = {
-	install(Vue: { component: (arg0: string, arg1: any) => void }) {
-		Vue.component(Button.name, Button);
-		Vue.component(ShareSheet.name, ShareSheet);
-		Vue.component(Cell.name, Cell);
-		Vue.component(CellGroup.name, CellGroup);
-		Vue.component(Row.name, Row);
-		Vue.component(Circle.name, Circle);
-		Vue.component(Tabbar.name, Tabbar);
-		Vue.component(TabbarItem.name, TabbarItem);
-		Vue.component(List.name, List);
-		Vue.component(Loading.name, Loading);
-		Vue.component(Image.name, Image);
-		Vue.component(Form.name, Form);
-		Vue.component(Field.name, Field);
-		Vue.component(Uploader.name, Uploader);
-		Vue.component(Popup.name, Popup);
-		Vue.component(Picker.name, Picker);
-		Vue.component(Step.name, Step);
-		Vue.component(Steps.name, Steps);
-		Vue.component(Divider.name, Divider);
-		Vue.component(Icon.name, Icon);
-		Vue.component(Tabs.name, Tabs);
-		Vue.component(Tab.name, Tab);
-		Vue.component(NavBar.name, NavBar);
-		Vue.component(Search.name, Search);
-		Vue.component(Col.name, Col);
-		Vue.component(ActionSheet.name, ActionSheet);
-		Vue.component(Empty.name, Empty);
-		Vue.component(Collapse.name, Collapse);
-		Vue.component(CollapseItem.name, CollapseItem);
-		Vue.component(PullRefresh.name, PullRefresh);
-		Vue.component(Dialog.name, Dialog);
+	install(vue: { component: (arg0: string, arg1: any) => void }) {
+		vue.component(Button.name, Button);
+		vue.component(ShareSheet.name, ShareSheet);
+		vue.component(Cell.name, Cell);
+		vue.component(CellGroup.name, CellGroup);
+		vue.component(Row.name, Row);
+		vue.component(Circle.name, Circle);
+		vue.component(Tabbar.name, Tabbar);
+		vue.component(TabbarItem.name, TabbarItem);
+		vue.component(List.name, List);
+		vue.component(Loading.name, Loading);
+		vue.component(Image.name, Image);
+		vue.component(Form.name, Form);
+		vue.component(Field.name, Field);
+		vue.component(Uploader.name, Uploader);
+		vue.component(Popup.name, Popup);
+		vue.component(Picker.name, Picker);
+		vue.component(Step.name, Step);
+		vue.component(Steps.name, Steps);
+		vue.component(Divider.name, Divider);
+		vue.component(Icon.name, Icon);
+		vue.component(Tabs.name, Tabs);
+		vue.component(Tab.name, Tab);
+		vue.component(NavBar.name, NavBar);
+		vue.component(Search.name, Search);
+		vue.component(Col.name, Col);
+		vue.component(ActionSheet.name, ActionSheet);
+		vue.component(Empty.name, Empty);
+		vue.component(Collapse.name, Collapse);
+		vue.component(CollapseItem.name, CollapseItem);
+		vue.component(PullRefresh.name, PullRefresh);
+		vue.component(Dialog.name, Dialog);
 	},
 };
 export default vantLib;

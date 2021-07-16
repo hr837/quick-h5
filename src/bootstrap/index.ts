@@ -3,6 +3,7 @@ import vantLib from "./vant-lib";
 import zwComponents from "./zw-components";
 import httpBoot from "./http.boot";
 import vConsoleBoot from "./v-console.boot";
+import { ConfigProvider } from "vant";
 
 export const boot = (app: App) => {
 	if (!import.meta.env.DEV)
@@ -24,4 +25,6 @@ export const boot = (app: App) => {
 	app.use(vantLib);
 	// 使用公共组件
 	app.use(zwComponents);
+	// 使用主题定制
+	app.use(ConfigProvider);
 };
