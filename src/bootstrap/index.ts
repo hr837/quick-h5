@@ -1,6 +1,5 @@
 import { App } from "@vue/runtime-core";
 import vantLib from "./vant-lib";
-import zwComponents from "./zw-components";
 import httpBoot from "./http.boot";
 import vConsoleBoot from "./v-console.boot";
 import { ConfigProvider } from "vant";
@@ -23,8 +22,6 @@ export const boot = (app: App) => {
 
 	// 使用vant 组件
 	app.use(vantLib);
-	// 使用公共组件
-	app.use(zwComponents);
 	// 使用主题定制
 	app.use(ConfigProvider);
 };

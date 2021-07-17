@@ -1,6 +1,24 @@
 @import "./variables.less";
 
 :root {
+	--van-blue: @primary-color!important;
 	--van-step-active-color: @primary-color!important;
 	--van-step-finish-line-color: @primary-color!important;
+}
+
+.van-button {
+	&--disabled {
+		background: var(--van-gray-6) !important;
+		border-color: var(--van-gray-6) !important;
+	}
+}
+
+.van-form {
+	.van-cell-group {
+		.van-cell {
+			&__title {
+				color: var(--van-field-label-color);
+			}
+		}
+	}
 }

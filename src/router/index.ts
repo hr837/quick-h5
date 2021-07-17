@@ -5,6 +5,26 @@ const routes: Array<RouteRecordRaw> = [
 		component: () => import("@/pages/Home.vue"),
 	},
 	{
+		path: "/loan-apply",
+		component: () => import("@/pages/LoanApply.vue"),
+	},
+	{
+		path: "/apply",
+		component: () => import("@/pages/Apply.vue"),
+	},
+	{
+		path: "/apply-success",
+		component: () => import("@/pages/ApplySuccess.vue"),
+	},
+	{
+		path: "/approve-failed",
+		component: () => import("@/pages/ApproveFailed.vue"),
+	},
+	{
+		path: "/auth-notice",
+		component: () => import("@/pages/AuthNotice.vue"),
+	},
+	{
 		path: "/customer-auth",
 		component: () => import("@/pages/customer-auth/CustomerAuth.vue"),
 	},

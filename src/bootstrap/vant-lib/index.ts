@@ -33,6 +33,8 @@ import {
 	CollapseItem,
 	Dialog,
 	PullRefresh,
+	Checkbox,
+	DatetimePicker,
 } from "vant";
 
 /**
@@ -71,6 +73,8 @@ const vantLib = {
 		vue.component(CollapseItem.name, CollapseItem);
 		vue.component(PullRefresh.name, PullRefresh);
 		vue.component(Dialog.name, Dialog);
+		vue.component(Checkbox.name, Checkbox);
+		vue.component(DatetimePicker.name, DatetimePicker);
 	},
 };
 export default vantLib;
