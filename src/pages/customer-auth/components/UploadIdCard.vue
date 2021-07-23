@@ -11,7 +11,7 @@
 					name="add"
 					size="36"
 					color="white"
-					@click="chooseImage('front')"
+					@click="chooseImage('face')"
 				/>
 				<van-icon v-else name="checked" size="36" color="#67C23A" />
 			</div>
@@ -27,6 +27,7 @@
 					name="add"
 					size="36"
 					color="white"
+					@click="chooseImage('back')"
 				/>
 				<van-icon v-else name="checked" size="36" color="#67C23A" />
 			</div>
@@ -66,48 +67,65 @@
 			style="display: none"
 			accept="image/*"
 			result-type="file"
+			:after-read="onAfterRead"
 		></van-uploader>
+
+		<img v-if="!!src" :src="src" class="image_item" />
 	</div>
 </template>
 
 <script lang="ts" setup>
-import {
-	computed,
-	defineComponent,
-	defineEmit,
-	reactive,
-} from "@vue/runtime-core";
+import { computed, defineEmit, reactive } from "@vue/runtime-core";
+import { Loading, Notify, Toast } from "vant";
 import { ref } from "vue";
 
+import {
+	idCradInfo,
+	frontMsg,
+	behandMsg,
+	readIdCardInfo,
+} from "../composeable";
+
 const emitter = defineEmit(["next"]);
+
 const canNext = computed(() => idCradInfo.name && idCradInfo.code);
 const refUpload = ref<any>();
-
-const idCradInfo = reactive({
-	front: false,
-	behand: false,
-	name: "",
-	code: "",
-});
 
 const uploadImage = reactive({
 	front: null,
 	behand: null,
 });
 
-const frontMsg = computed(() =>
-	idCradInfo.front ? "上传成功" : "上传身份证(照片面)"
-);
-const behandMsg = computed(() =>
-	idCradInfo.behand ? "上传成功" : "上传身份证(国徽面)"
-);
+const src = ref("");
+
+/**
+ * 当前操作的正反面
+ */
+let currentSide: CardSide = "face";
 
 function submit() {
 	emitter("next");
 }
 
-function chooseImage(type: "front" | "behand") {
+function chooseImage(side: CardSide) {
+	currentSide = side;
 	refUpload.value.chooseFile();
+}
+
+function onAfterRead({ file }: any) {
+	const loading = Toast({
+		type: "loading",
+		message: "识别中...",
+	});
+
+	readIdCardInfo(file, currentSide)
+		.catch((msg) =>
+			Notify({
+				message: msg,
+				type: "danger",
+			})
+		)
+		.finally(() => loading.close());
 }
 </script>
 
@@ -146,6 +164,12 @@ function chooseImage(type: "front" | "behand") {
 	}
 	.upload-submit {
 		margin: 20px 10px;
+	}
+
+	.image_item {
+		height: 100px;
+		width: 100px;
+		object-fit: cover;
 	}
 }
 </style>
