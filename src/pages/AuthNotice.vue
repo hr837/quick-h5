@@ -39,7 +39,7 @@ function submit() {
 		padding: 10px;
 		&__agreement {
 			margin-top: 10px;
-			/deep/ .van-checkbox__label {
+			:deep(.van-checkbox__label) {
 				color: var(--van-gray-6);
 			}
 			&-redirect {

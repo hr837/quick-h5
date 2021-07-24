@@ -1,6 +1,5 @@
 import { App } from "@vue/runtime-core";
 import vantLib from "./vant-lib";
-import httpBoot from "./http.boot";
 import vConsoleBoot from "./v-console.boot";
 import { ConfigProvider } from "vant";
 
@@ -13,9 +12,6 @@ export const boot = (app: App) => {
 
 	// 更改系统标题
 	document.title = import.meta.env.VITE_APP_SYSNAME;
-
-	// 使用http服务
-	httpBoot();
 
 	// 启用vConsole
 	vConsoleBoot();

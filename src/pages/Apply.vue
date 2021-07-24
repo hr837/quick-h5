@@ -1,7 +1,12 @@
 <template>
 	<div class="page apply">
 		<div class="page-title">个人信息录入</div>
-		<van-form class="apply-form" input-align="right" @submit="submit">
+		<van-form
+			class="apply-form"
+			input-align="right"
+			error-message-align="right"
+			@submit="submit"
+		>
 			<van-cell-group>
 				<van-field
 					v-model="model.name"
@@ -23,7 +28,10 @@
 					label="证件号码"
 					placeholder="请输入证件号码"
 					:maxlength="18"
-					:rules="[{ required: true, message: '请输入证件号码' }]"
+					:rules="[
+						{ required: true, message: '请输入证件号码' },
+						{ pattern: /^\d{17}[Xx0-9]$/, message: '请输入正确的证件号码' },
+					]"
 				></van-field>
 				<van-field
 					v-model="model.company"
@@ -52,6 +60,14 @@
 					label="手机号码"
 					:maxlength="11"
 					placeholder="请输入手机号码"
+					:rules="[
+						{ required: true, message: '请输入手机号码' },
+						{
+							pattern: /^1[3-9]\d{9}$/,
+							message: '请输入正确的手机号',
+							trigger: 'onBlur',
+						},
+					]"
 				></van-field>
 			</van-cell-group>
 			<div class="apply-operate">

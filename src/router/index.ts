@@ -2,16 +2,17 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 const routes: Array<RouteRecordRaw> = [
 	{
 		path: "/",
-		component: () => import("@/pages/Home.vue"),
+		// component: () => import("@/pages/Home.vue"),
+		component: () => import("@/pages/Apply.vue"),
 	},
 	{
 		path: "/loan-apply",
 		component: () => import("@/pages/LoanApply.vue"),
 	},
-	{
-		path: "/apply",
-		component: () => import("@/pages/Apply.vue"),
-	},
+	// {
+	// 	path: "/apply",
+	// 	component: () => import("@/pages/Apply.vue"),
+	// },
 	{
 		path: "/apply-success",
 		component: () => import("@/pages/ApplySuccess.vue"),

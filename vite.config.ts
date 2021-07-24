@@ -4,7 +4,6 @@ import styleImport from "vite-plugin-style-import";
 import path from "path";
 import { version } from "./package.json";
 import pxToViewPort from "postcss-px-to-viewport";
-import { viteMockServe } from "vite-plugin-mock";
 
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
@@ -35,12 +34,6 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
 						resolveStyle: (name) => `vant/es/${name}/style`,
 					},
 				],
-			}),
-			viteMockServe({
-				mockPath: "src/api/mock",
-				supportTs: true,
-				localEnabled: command === "serve",
-				prodEnabled: false,
 			}),
 		],
 		resolve: {

@@ -32,7 +32,6 @@ export function readIdCardInfo(file: File, type: CardSide) {
 			if (typeof data === "string") {
 				service.readCardInfo(data).subscribe({
 					next: (resData) => {
-						console.log(resData);
 						if (type === "back") {
 							idCradInfo.behand = true;
 						}

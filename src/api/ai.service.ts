@@ -1,36 +1,48 @@
-import { of } from "rxjs";
+import { throwError } from "rxjs";
 import { ajax } from "rxjs/ajax";
-import { catchError, filter, map, tap } from "rxjs/operators";
+import { catchError, map } from "rxjs/operators";
+import { stringify } from "qs";
 
 export default class AIService {
+	readonly souce = "market";
 	private url = "";
-	private code = "";
+	private appCode = "";
 
 	constructor() {
 		this.url = import.meta.env.VITE_APP_IDCARD_API as string;
-		this.code = import.meta.env.VITE_APP_IDCARD_CODE as string;
+		this.appCode = import.meta.env.VITE_APP_APPCODE as string;
 	}
 
+	/**
+	 * 识别身份证信息
+	 * @param imageBase64
+	 * @returns
+	 */
 	readCardInfo(imageBase64: string) {
-		// return requestParam.request();
+		const baseData = imageBase64.split(",")[1];
+
 		return ajax({
 			url: this.url,
 			headers: {
-				Authorization: `APPCODE ${this.code}`,
+				Authorization: `APPCODE ${this.appCode}`,
+				"content-type": "application/x-www-form-urlencoded",
 			},
 			crossDomain: true,
 			method: "POST",
-			body: {
-				image: imageBase64,
-			},
-		}).pipe(
-			tap((x) => {
-				if (x.status !== 200) throw Error();
+			body: stringify({
+				pic: baseData,
 			}),
-			map((data) => data.response),
+		}).pipe(
+			map(({ response }: any) => {
+				const { msg, data, ret } = response;
+				if (ret !== 200) {
+					throw msg;
+				}
+				return data;
+			}),
 			catchError((err) => {
-				console.error(err);
-				return of(err);
+				console.log(err.response);
+				return throwError(() => "证件识别失败,请稍后重试");
 			})
 		);
 	}

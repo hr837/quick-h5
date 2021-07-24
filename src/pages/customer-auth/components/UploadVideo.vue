@@ -48,8 +48,8 @@ function onFileLoad(file) {
 .component.upload-video {
 	.upload {
 		&-bg {
-			height: 400px;
-			background: url("/images/face-auth.png") -2px top / 100% 400px no-repeat;
+			height: 500px;
+			background: url("/images/face-auth.jpg") center / cover no-repeat;
 		}
 	}
 }
